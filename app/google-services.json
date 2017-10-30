@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "527701327831",
+    "firebase_url": "https://ayudantia-usfx.firebaseio.com",
+    "project_id": "ayudantia-usfx",
+    "storage_bucket": "ayudantia-usfx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527701327831:android:7876612f07dcfa39",
+        "android_client_info": {
+          "package_name": "free.tech.uschedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527701327831-klr4enl925vp6eogb7nikmhgi5d7es7q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf1ouqT5pWVFcrqT_y2VSMHq5ALu_kZ8I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
