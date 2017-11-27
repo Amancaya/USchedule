@@ -2,7 +2,6 @@ package free.tech.uschedule;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.WindowDecorActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,12 +13,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import free.tech.uschedule.Adapters.AdapterRecycler;
 import free.tech.uschedule.Model.Subject;
+import io.realm.RealmObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private DatabaseReference databaseReference;
-    private List<Item> itemList;
+    private List<RealmObject> itemList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         LoadDataFireBase();
         if (itemList != null){
+            Log.e(TAG, "ENTRAN");
             progressBar.setVisibility(View.GONE);
             recyclerView.setAdapter(new AdapterRecycler(itemList, this));
         }
@@ -57,6 +58,18 @@ public class MainActivity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if (dataSnapshot.exists()){
                     Log.e(TAG, dataSnapshot.toString());
+                    if (dataSnapshot.hasChild("schedule")){
+                        Log.e(TAG+" schedule", dataSnapshot.child("schedule").toString());
+                    }
+
+                    if (dataSnapshot.hasChild("assistance")){
+                        Log.e(TAG+"asistente", dataSnapshot.child("assistance").toString());
+                        if (dataSnapshot.child("assistance").hasChild("schedule")){
+                            Log.e(TAG+"SCH AS", dataSnapshot.child("assistance").child("schedule").toString());
+                        }
+                    }
+//                    Subject subject = dataSnapshot.getValue(Subject.class);
+//                    itemList.add(subject);
                 }
             }
 
